@@ -275,9 +275,14 @@ void setup(void)
   //Setup WIFI Manager
   WiFiManager wifiManager;
   
-  //reset settings - for testing
-  //clean FS, for testing
-  //helper.resetsettings(wifiManager);
+  //Just after the device has been switched on, keep the flash button pressed for at least 3 seconds to format the filesystem and reset the device.
+  Serial.print(F("Waiting 3 seconds - Press flash button(GPIO0) to reset settings.\n"));
+  delay(3000);
+  pinMode(0, INPUT);
+  if (digitalRead(0) == LOW) {
+    Serial.print(F("Resetting settings\n"));
+    helper.resetsettings(wifiManager);
+  }
 
   wifiManager.setSaveConfigCallback(saveConfigCallback);
   //add all your parameters here
