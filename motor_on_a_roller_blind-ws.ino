@@ -26,7 +26,7 @@ const uint8_t btnres = D7; //Reset button
 //----------------------------------------------------
 
 // Version number for checking if there are new code releases and notifying the user
-String version = "1.3.3";
+String version = "1.3.4";
 
 NidayandHelper helper = NidayandHelper();
 
